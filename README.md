@@ -64,11 +64,6 @@ GPT-Resumonator/
 │   ├── __init__.py
 │   ├── resumonator.py
 │   ├── utils.py
-│   ├── file_handlers/
-│   │   ├── __init__.py
-│   │   ├── pdf_handler.py
-│   │   ├── docx_handler.py
-│   │   └── txt_handler.py
 │   └── models/
 │       ├── __init__.py
 │       ├── resume.py
@@ -76,7 +71,6 @@ GPT-Resumonator/
 │
 ├── .gitignore
 ├── README.md
-├── requirements.txt
 └── LICENSE
 ```
 
