@@ -1,5 +1,7 @@
 import os
-from typing import List
+import csv
+import json
+from typing import List, Dict, Union
 
 supported_formats = ('.pdf', '.docx', '.txt')
 
@@ -18,3 +20,38 @@ def get_file_list(folder_path: str) -> List[str]:
             if file_extension in supported_formats:
                 file_list.append(os.path.join(root, file))
     return file_list
+
+
+def export_data_to_file(data: List[Dict, ...], file_format: str, output_folder: str) -> None:
+    """
+    Exports the extracted resume data to a file in the specified format (CSV or JSON).
+
+    :param data: A list of dictionaries containing the extracted resume data.
+    :param file_format: The output file format (CSV or JSON).
+    :param output_folder: The folder to save the exported file.
+    """
+    if file_format.lower() == "csv":
+        export_to_csv(data, output_folder)
+    elif file_format.lower() == "json":
+        export_to_json(data, output_folder)
+    else:
+        raise ValueError(f"Unsupported file format: {file_format}")
+
+
+def export_to_csv(data: List[Dict, ...], output_folder: str) -> None:
+    output_file = os.path.join(output_folder, "resume_data.csv")
+
+    with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
+        fieldnames = data[0].keys()
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writeheader()
+        for row in data:
+            writer.writerow(row)
+
+
+def export_to_json(data: List[Dict, ...], output_folder: str) -> None:
+    output_file = os.path.join(output_folder, "resume_data.json")
+
+    with open(output_file, 'w', encoding='utf-8') as jsonfile:
+        json.dump(data, jsonfile, ensure_ascii=False, indent=4)
