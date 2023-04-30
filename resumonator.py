@@ -4,8 +4,7 @@ from models.resume import Resume
 from utils import (
     get_file_list,
     file_to_text,
-    export_data_to_file,
-    SUPPORTED_FORMATS
+    export_data_to_file
 )
 
 
