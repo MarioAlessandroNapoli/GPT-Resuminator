@@ -2,6 +2,7 @@ import os
 from typing import Optional
 from utils import file_to_text, detect_language, supported_formats
 
+
 class Resume:
     def __init__(self, file_path: str):
         self.file_path = file_path
