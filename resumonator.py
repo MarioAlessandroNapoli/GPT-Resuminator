@@ -3,7 +3,6 @@ import argparse
 from models.resume import Resume
 from utils import (
     get_file_list,
-    file_to_text,
     export_data_to_file
 )
 
@@ -29,9 +28,7 @@ def main():
     extracted_data = []
 
     for file_path in file_list:
-        file_extension = os.path.splitext(file_path)[1].lower()
-        raw_text = file_to_text(file_path, file_extension)
-        resume = Resume(raw_text)
+        resume = Resume(file_path)
         resume.process(args.summary_length)
         extracted_data.append(resume.to_dict())
 
