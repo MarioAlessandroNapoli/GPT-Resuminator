@@ -1,7 +1,7 @@
 import os
 import csv
 import json
-from typing import List, Dict, Union
+from typing import List, Dict
 
 supported_formats = ('.pdf', '.docx', '.txt')
 
