@@ -1,7 +1,7 @@
 import os
 import argparse
-from gpt_resumonator.models.resume import Resume
-from gpt_resumonator.utils import (
+from models.resume import Resume
+from utils import (
     get_file_list,
     file_to_text,
     export_data_to_file,
@@ -25,7 +25,7 @@ def main():
     if not os.path.exists(args.output_folder):
         os.makedirs(args.output_folder)
 
-    file_list = get_file_list(args.input_folder, SUPPORTED_FORMATS)
+    file_list = get_file_list(args.input_folder)
 
     extracted_data = []
 
