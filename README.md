@@ -1,6 +1,6 @@
-# GPT-Resumonator
+# GPT-Resuminator
 
-GPT-Resumonator is an innovative tool that streamlines the process of extracting information from resumes using the ChatGPT API. Save time and resources by allowing GPT-Resumonator to handle the tedious task of resume screening for you. Simply upload your resumes and let the magic happen!
+GPT-Resuminator is an innovative tool that streamlines the process of extracting information from resumes using the ChatGPT API. Save time and resources by allowing GPT-Resuminator to handle the tedious task of resume screening for you. Simply upload your resumes and let the magic happen!
 
 ## Table of Contents
 1. [Features](#features)
@@ -21,16 +21,16 @@ GPT-Resumonator is an innovative tool that streamlines the process of extracting
 - Configurable parameters to tailor the extraction process
 
 ## Installation
-To install GPT-Resumonator, follow these simple steps:
+To install GPT-Resuminator, follow these simple steps:
 
 1. Clone the repository:
 ```
-git clone https://github.com/MarioAlessandroNapoli/GPT-Resumonator
+git clone https://github.com/MarioAlessandroNapoli/GPT-Resuminator
 ```
 
-2. Change the working directory to GPT-Resumonator:
+2. Change the working directory to GPT-Resuminator:
 ```
-cd GPT-Resumonator
+cd GPT-Resuminator
 ```
 
 3. Install the required dependencies:
@@ -44,7 +44,7 @@ export CHATGPT_API_KEY=your_api_key_here
 ```
 
 ## Usage
-To run GPT-Resumonator, execute the following command in the terminal:
+To run GPT-Resuminator, execute the following command in the terminal:
 ```
 python resumonator.py --input-folder /path/to/resumes
 ```
@@ -55,10 +55,10 @@ python resumonator.py --help
 ```
 
 ## Project Structure
-The GPT-Resumonator project is organized as follows:
+The GPT-Resuminator project is organized as follows:
 
 ```
-GPT-Resumonator/
+GPT-Resuminator/
 │
 ├── gpt_resumonator/
 │   ├── __init__.py
@@ -75,11 +75,11 @@ GPT-Resumonator/
 ```
 
 ## API Integration
-GPT-Resumonator uses the ChatGPT API to enhance the information extraction process. To set up and use the API, follow these steps:
+GPT-Resuminator uses the ChatGPT API to enhance the information extraction process. To set up and use the API, follow these steps:
 
 1. Sign up for an API key from the [OpenAI website](https://beta.openai.com/signup/).
 2. Store your API key as an environment variable (see [Installation](#installation) step 4).
-3. GPT-Resumonator will automatically use the API key to access the ChatGPT API when processing resumes.
+3. GPT-Resuminator will automatically use the API key to access the ChatGPT API when processing resumes.
 
 ## Contributing
 We welcome contributions from the community! If you'd like to get involved, please follow these steps:
@@ -101,21 +101,21 @@ git commit -m "Add my new feature"
 git push origin my-new-feature
 ```
 
-5. Create a pull request on the original GPT-Resumonator repository.
+5. Create a pull request on the original GPT-Resuminator repository.
 
 Please ensure that your code adheres to our coding standards and guidelines. Before submitting a pull request, make sure to update the documentation and add any necessary tests.
 
 ## License
-GPT-Resumonator is released under the [GNU GPL License](https://github.com/MarioAlessandroNapoli/GPT-Resumonator/blob/main/LICENSE).
+GPT-Resuminator is released under the [GNU GPL License](https://github.com/MarioAlessandroNapoli/GPT-Resuminator/blob/main/LICENSE).
 
 ## Support
-If you encounter any issues or have questions, please create an issue on the [GitHub repository](https://github.com/MarioAlessandroNapoli/GPT-Resumonator/issues).
+If you encounter any issues or have questions, please create an issue on the [GitHub repository](https://github.com/MarioAlessandroNapoli/GPT-Resuminator/issues).
 
 ## Acknowledgements
-We would like to express our gratitude to the following projects and resources, which inspired and facilitated the development of GPT-Resumonator:
+We would like to express our gratitude to the following projects and resources, which inspired and facilitated the development of GPT-Resuminator:
 
 - [OpenAI](https://openai.com/) for creating the ChatGPT API
 - [pdfminer](https://github.com/pdfminer/pdfminer.six) for PDF file handling
 - [python-docx](https://github.com/python-openxml/python-docx) for DOCX file handling
 
-Thank you for your interest in GPT-Resumonator! With your support, we can continue to improve and refine this powerful tool for resume processing.
+Thank you for your interest in GPT-Resuminator! With your support, we can continue to improve and refine this powerful tool for resume processing.
