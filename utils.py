@@ -1,9 +1,10 @@
 import os
 import csv
 import json
+import openai
+from docx2pdf import convert
 from typing import List, Dict
 from pdfminer.high_level import extract_text
-from docx2pdf import convert
 
 supported_formats = ('.pdf', '.docx', '.txt')
 
@@ -76,3 +77,11 @@ def file_to_text(file_path: str, file_extension: str) -> str:
     else:
         raise ValueError(f"Unsupported file format: {file_extension}")
     return text
+
+
+def generate_text(messages: List[Dict[str, str]]) -> str:
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=messages
+    )
+    return response['choices'][0]['message']['content']
