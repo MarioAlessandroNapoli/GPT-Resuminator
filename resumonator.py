@@ -9,8 +9,8 @@ from utils import (
 
 def parse_args():
     parser = argparse.ArgumentParser(description="GPT-Resumonator: Automated Resume Information Extraction")
-    parser.add_argument("--input-folder", required=True, help="Path to the folder containing resumes")
-    parser.add_argument("--output-folder", default="./output", help="Path to the folder to save the extracted data")
+    parser.add_argument("--input-folder", default="./data/input", help="Path to the folder containing resumes")
+    parser.add_argument("--output-folder", default=".data/output", help="Path to the folder to save the extracted data")
     parser.add_argument("--format", default="csv", choices=["csv", "json"],
                         help="Output format for extracted data (csv or json)")
     parser.add_argument("--summary-length", default=200, type=int, help="Maximum length of generated summaries")
