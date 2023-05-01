@@ -1,0 +1,4 @@
+langdetect==1.0.9
+openai==0.27.5
+pdfminer.six==20221105
+docx2pdf==0.1.8
