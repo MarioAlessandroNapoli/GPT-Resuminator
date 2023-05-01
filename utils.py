@@ -2,6 +2,8 @@ import os
 import csv
 import json
 from typing import List, Dict
+from pdfminer.high_level import extract_text
+from docx2pdf import convert
 
 supported_formats = ('.pdf', '.docx', '.txt')
 
@@ -22,7 +24,7 @@ def get_file_list(folder_path: str) -> List[str]:
     return file_list
 
 
-def export_data_to_file(data: List[Dict, ...], file_format: str, output_folder: str) -> None:
+def export_data_to_file(data: List[Dict], file_format: str, output_folder: str) -> None:
     """
     Exports the extracted resume data to a file in the specified format (CSV or JSON).
 
@@ -38,7 +40,7 @@ def export_data_to_file(data: List[Dict, ...], file_format: str, output_folder: 
         raise ValueError(f"Unsupported file format: {file_format}")
 
 
-def export_to_csv(data: List[Dict, ...], output_folder: str) -> None:
+def export_to_csv(data: List[Dict], output_folder: str) -> None:
     output_file = os.path.join(output_folder, "resume_data.csv")
 
     with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
@@ -50,8 +52,27 @@ def export_to_csv(data: List[Dict, ...], output_folder: str) -> None:
             writer.writerow(row)
 
 
-def export_to_json(data: List[Dict, ...], output_folder: str) -> None:
+def export_to_json(data: List[Dict], output_folder: str) -> None:
     output_file = os.path.join(output_folder, "resume_data.json")
 
     with open(output_file, 'w', encoding='utf-8') as jsonfile:
         json.dump(data, jsonfile, ensure_ascii=False, indent=4)
+
+
+def file_to_text(file_path: str, file_extension: str) -> str:
+    """
+    Extracts all text from a file with the given file_path and file_extension.
+
+    :param file_path: The path to the file.
+    :param file_extension: The file's extension (e.g., .pdf or .docx).
+    :return: The extracted text as a string.
+    """
+    if file_extension.lower() == ".pdf":
+        text = extract_text(file_path)
+    elif file_extension.lower() == ".docx":
+        convert(file_path)
+        new_file_path = os.path.splitext(file_path)[0]+'.pdf'
+        text = extract_text(new_file_path)
+    else:
+        raise ValueError(f"Unsupported file format: {file_extension}")
+    return text
