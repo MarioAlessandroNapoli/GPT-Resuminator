@@ -1,6 +1,6 @@
 import os
 import argparse
-from models.resume import Resume
+from resume import Resume
 from utils import (
     get_file_list,
     export_to_json
