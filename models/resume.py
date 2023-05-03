@@ -1,74 +1,34 @@
 import os
-from typing import Optional
-from langdetect import detect
-from utils import file_to_text, supported_formats
+from utils import file_to_text, supported_formats, generate_json_response, get_gpt_summary
 
 
 class Resume:
     def __init__(self, file_path: str):
         self.file_path = file_path
         self.file_extension = os.path.splitext(file_path)[1].lower()
-        self.skills, self.experience, self.education, self.contact_info,\
-            self.language, self.raw_text, self.summary, self.companies, self.total_work_experience = None
+        self.contact_info, self.experience, self.education, self.skills, self.companies_worked_for, self.summary = [None]*6
 
         if self.file_extension not in supported_formats:
             raise ValueError(f"Unsupported file format: {self.file_extension}")
 
-        self._extract_text()
-        self._detect_language()
-
-    def _extract_text(self):
         self.raw_text = file_to_text(self.file_path, self.file_extension)
 
-    def _detect_language(self):
-        self.language = detect(self.raw_text)
-
-    def process(self, summary_length: Optional[int] = 500):
-        self._extract_contact_info()
-        self._extract_education()
-        self._extract_experience()
-        self._extract_skills()
-        self._extract_companies()
-        self._extract_total_work_experience()
-        self._generate_summary(summary_length)
-
-    def _extract_contact_info(self):
-        # Implement contact info extraction logic based on self.language and self.raw_text
-        return
-
-    def _extract_education(self):
-        # Implement education extraction logic based on self.language and self.raw_text
-        return
-
-    def _extract_experience(self):
-        # Implement experience extraction logic based on self.language and self.raw_text
-        return
-
-    def _extract_skills(self):
-        # Implement skills extraction logic based on self.language and self.raw_text
-        return
-
-    def _extract_companies(self):
-        # Implement skills extraction logic based on self.language and self.raw_text
-        return
-
-    def _extract_total_work_experience(self):
-        # Implement skills extraction logic based on self.language and self.raw_text
-        return
-
-    def _generate_summary(self, summary_length):
-        # Implement summary generation logic using ChatGPT API
-        return
+    def process(self, summary_length: int):
+        cv_output = generate_json_response(self.raw_text)
+        self.contact_info = cv_output.get('contact_info')
+        self.experience = cv_output.get('contact_info')
+        self.education = cv_output.get('contact_info')
+        self.skills = cv_output.get('contact_info')
+        self.companies_worked_for = cv_output.get('contact_info')
+        self.summary = get_gpt_summary(self.raw_text, summary_length)
 
     def to_dict(self):
         return {
             "file_path": self.file_path,
-            "language": self.language,
             "contact_info": self.contact_info,
-            "education": self.education,
             "experience": self.experience,
+            "education": self.education,
             "skills": self.skills,
-            "companies_worked_for": self.companies,
-            "total_work_experience": self.total_work_experience,
+            "companies_worked_for": self.companies_worked_for,
             "summary": self.summary,
         }
