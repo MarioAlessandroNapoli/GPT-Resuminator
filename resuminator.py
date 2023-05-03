@@ -3,7 +3,7 @@ import argparse
 from models.resume import Resume
 from utils import (
     get_file_list,
-    export_data_to_file
+    export_to_json
 )
 
 
@@ -11,8 +11,6 @@ def parse_args():
     parser = argparse.ArgumentParser(description="GPT-Resumonator: Automated Resume Information Extraction")
     parser.add_argument("--input-folder", default="./data/input", help="Path to the folder containing resumes")
     parser.add_argument("--output-folder", default="./data/output", help="Path to the folder to save the extracted data")
-    parser.add_argument("--format", default="csv", choices=["csv", "json"],
-                        help="Output format for extracted data (csv or json)")
     parser.add_argument("--summary-length", default=200, type=int, help="Maximum length of generated summaries")
     return parser.parse_args()
 
@@ -32,7 +30,7 @@ def main():
         resume.process(args.summary_length)
         extracted_data.append(resume.to_dict())
 
-    export_data_to_file(extracted_data, args.format, args.output_folder)
+    export_to_json(extracted_data, args.output_folder)
 
 
 if __name__ == "__main__":
