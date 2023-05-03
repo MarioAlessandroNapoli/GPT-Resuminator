@@ -46,12 +46,12 @@ export CHATGPT_API_KEY=your_api_key_here
 ## Usage
 To run GPT-Resuminator, execute the following command in the terminal:
 ```
-python resumonator.py --input-folder /path/to/resumes
+python resuminator.py --input-folder /path/to/resumes
 ```
 
 You can also specify optional arguments, such as output format or summary length. For a full list of options, run:
 ```
-python resumonator.py --help
+python resuminator.py --help
 ```
 
 ## Project Structure
@@ -60,9 +60,9 @@ The GPT-Resuminator project is organized as follows:
 ```
 GPT-Resuminator/
 │
-├── gpt_resumonator/
+├── gpt_resuminator/
 │   ├── __init__.py
-│   ├── resumonator.py
+│   ├── resuminator.py
 │   ├── utils.py
 │   └── models/
 │       ├── __init__.py
