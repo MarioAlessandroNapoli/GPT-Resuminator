@@ -67,8 +67,6 @@ GPT-Resuminator/
 │   └── models/
 │       ├── __init__.py
 │       ├── resume.py
-│       └── chatgpt.py
-│
 ├── .gitignore
 ├── README.md
 └── LICENSE
